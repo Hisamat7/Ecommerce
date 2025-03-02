@@ -63,7 +63,7 @@ class _SignupState extends State<Signup> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(left: 15.w, right: 15.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
                 children: [
                   SizedBox(
@@ -153,7 +153,7 @@ class _SignupState extends State<Signup> {
               onPressed: () {
                 
               },
-              text: "Sign Up",
+              text: "Login",
             )
           ],
         ),
