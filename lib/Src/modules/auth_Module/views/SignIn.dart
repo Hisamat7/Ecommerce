@@ -1,8 +1,10 @@
 import 'package:ecommerce/Src/const/App_Colors.dart';
 import 'package:ecommerce/Src/const/App_Images.dart';
 import 'package:ecommerce/Src/const/Button.dart';
+import 'package:ecommerce/Src/modules/auth_Module/views/SignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({super.key});
@@ -12,6 +14,27 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  Widget googleAndFacebook({required String text, required String image}) {
+    return Container(
+      height: 50.h,
+      width: 150.w,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Color(0xFF252525),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            text,
+            style: TextStyle(color: Colors.white),
+          ),
+          Image.asset(image),
+        ],
+      ),
+    );
+  }
+
   bool obscureText = false;
   @override
   Widget build(BuildContext context) {
@@ -20,7 +43,7 @@ class _SignInState extends State<SignIn> {
         child: Column(
           children: [
             Container(
-              height: 250.h,
+              height: 310.h,
               width: double.infinity,
               child: Stack(
                 children: [
@@ -46,41 +69,11 @@ class _SignInState extends State<SignIn> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20.h,
-                  ),
-                  Center(
-                    child: Text(
-                      "Sign Up For Free",
-                      style: TextStyle(color: Colors.white, fontSize: 20),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 40.h,
+                    height: 60.h,
                   ),
                   TextFormField(
                     style: TextStyle(color: Colors.white),
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.person,
-                            color: const Color.fromARGB(255, 53, 129, 55)),
-                        labelStyle: TextStyle(color: Colors.white),
-                        labelText: "Name",
-                        hintStyle: TextStyle(
-                            color: const Color.fromARGB(255, 103, 102, 102)),
-                        hintText: "Full Name",
-                        fillColor: Color(0xFF252525),
-                        filled: true,
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide.none)),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  TextFormField(
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.email,
-                            color: const Color.fromARGB(255, 53, 129, 55)),
                         labelStyle: TextStyle(color: Colors.white),
                         labelText: "Email",
                         hintStyle: TextStyle(
@@ -99,8 +92,6 @@ class _SignInState extends State<SignIn> {
                     style: TextStyle(color: Colors.white),
                     obscureText: obscureText,
                     decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,
-                            color: const Color.fromARGB(255, 53, 129, 55)),
                         labelStyle: TextStyle(color: Colors.white),
                         suffixIcon: IconButton(
                           icon: Icon(obscureText
@@ -128,55 +119,65 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: 20.h,
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.w),
-              child: Row(
-                children: [
-                  Checkbox(
-                    shape: CircleBorder(),
-                    activeColor: buttonColor,
-                    value: true,
-                    onChanged: (value) {},
-                  ),
-                  Text(
-                    "Keep me signed in",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
+            Center(
+              child: Text(
+                "Or continue with",
+                style: TextStyle(color: Colors.white),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.only(left: 10.w),
+            SizedBox(
+              height: 20.h,
+            ),
+            Container(
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Checkbox(
-                    shape: CircleBorder(),
-                    activeColor: buttonColor,
-                    value: true,
-                    onChanged: (value) {},
-                  ),
-                  Text(
-                    "Email me about special offers",
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  googleAndFacebook(
+                      text: "Facebook", image: AppImages.facebookicon),
+                  googleAndFacebook(
+                      text: "Google", image: AppImages.googleicon),
                 ],
               ),
             ),
             SizedBox(
               height: 25.h,
             ),
-            Button(
-              onPressed: () {},
-              text: "Create Account",
+            Center(
+              child: Text(
+                "Forgot Your Password?",
+                style: TextStyle(color: buttonColor),
+              ),
             ),
             SizedBox(
               height: 30.h,
             ),
-            Center(
-              child: Text(
-                "Already have an account?",
-                style: TextStyle(color: buttonColor),
-              ),
+            Button(
+              onPressed: () {},
+              text: "Login",
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(color: Colors.white),
+                ),
+                SizedBox(
+                  width: 5.w,
+                ),
+                TextButton(
+                  onPressed: () {
+                    Get.to(()=>SignUp());
+                  },
+                  child: Text(
+                    "Sign Up",
+                    style: TextStyle(color: buttonColor),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -1,6 +1,6 @@
 import 'package:ecommerce/Src/const/App_Images.dart';
 import 'package:ecommerce/Src/const/Button.dart';
-import 'package:ecommerce/Src/modules/auth_Module/views/SignUp.dart';
+import 'package:ecommerce/Src/modules/auth_Module/views/SignIn.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +36,7 @@ class _OnBoardingTwoState extends State<OnBoardingTwo> {
                 height: 40.h,
               ),
              Button(text: "Next", onPressed: (){
-               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Signup()));
+               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignIn()));
              })
             ],
           ),
