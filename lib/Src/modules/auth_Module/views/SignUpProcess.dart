@@ -1,4 +1,6 @@
+import 'package:ecommerce/Src/const/AppBarForApp.dart';
 import 'package:ecommerce/Src/const/Button.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/UploadImageScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,27 +16,7 @@ class _SignUpProcessState extends State<SignUpProcess> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: Container(
-          padding: EdgeInsets.only(left: 6.w),
-          margin: EdgeInsets.only(left: 10.w, top: 10.h),
-          decoration: BoxDecoration(
-            color: Color(0xFF252525),
-            borderRadius: BorderRadius.circular(17),
-          ),
-          child: IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: Icon(
-                Icons.arrow_back_ios,
-                size: 20.sp,
-                color: Color(0xFFDA6317),
-              )),
-        ),
-      ),
+      appBar: Appbarforapp( onPressed: () {}),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
@@ -114,7 +96,9 @@ class _SignUpProcessState extends State<SignUpProcess> {
           Padding(
             padding: EdgeInsets.only(bottom: 40.h),
             child: Button(
-              onPressed: () {},
+              onPressed: () {
+                Get.off(() => Uploadimagescreen());
+              },
               text: "Next",
             ),
           ),

@@ -1,4 +1,5 @@
 import 'package:ecommerce/Src/const/App_Colors.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/UploadImageScreen.dart';
 import 'package:ecommerce/Src/modules/Onboarding/views/SplashScreen.dart';
 import 'package:ecommerce/Src/modules/auth_Module/controllers/LoginController.dart';
 import 'package:ecommerce/firebase_options.dart';
@@ -26,9 +27,7 @@ Future<void> main() async{
              fontFamily: 'Poppins',
           ),
           debugShowCheckedModeBanner: false,
-          home:  Splashscreen(
-
-          ),
+          home: Splashscreen()
         );
       },
     )

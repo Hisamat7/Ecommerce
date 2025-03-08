@@ -1,8 +1,10 @@
 import 'package:ecommerce/Src/const/App_Colors.dart';
 import 'package:ecommerce/Src/const/App_Images.dart';
-import 'package:ecommerce/Src/modules/Onboarding/views/OnBoardingOne.dart';
+import 'package:ecommerce/Src/modules/auth_Module/controllers/LoginController.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -12,16 +14,21 @@ class Splashscreen extends StatefulWidget {
 }
 
 class _SplashscreenState extends State<Splashscreen> {
-  @override
+  LoginController loginController = Get.find<LoginController>();
+
   @override
   void initState() {
     super.initState();
+    print("Current user on app start: ${FirebaseAuth.instance.currentUser}");
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OnBoardingOne()));
+      loginController.checkForlogin();
     });
   }
+
+  @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: appBackGroundColor,
@@ -43,7 +50,6 @@ class _SplashscreenState extends State<Splashscreen> {
               ),
             ),
             // Centered Logo
-
             Center(
               child: Image.asset(
                 AppImages.logo,
