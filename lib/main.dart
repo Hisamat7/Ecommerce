@@ -1,5 +1,6 @@
 import 'package:ecommerce/Src/const/App_Colors.dart';
 import 'package:ecommerce/Src/modules/Kyc_Module/UploadImageScreen.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/controller/Kyc_Controller.dart';
 import 'package:ecommerce/Src/modules/Onboarding/views/SplashScreen.dart';
 import 'package:ecommerce/Src/modules/auth_Module/controllers/LoginController.dart';
 import 'package:ecommerce/firebase_options.dart';
@@ -22,6 +23,7 @@ Future<void> main() async{
       splitScreenMode: true,
       builder: (context, child) {
         Get.put(LoginController());
+        Get.put(KycController());
         return GetMaterialApp(
           theme: ThemeData(
             scaffoldBackgroundColor: appBackGroundColor,
