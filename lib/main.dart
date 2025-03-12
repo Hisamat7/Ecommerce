@@ -1,5 +1,4 @@
 import 'package:ecommerce/Src/const/App_Colors.dart';
-import 'package:ecommerce/Src/modules/Kyc_Module/UploadImageScreen.dart';
 import 'package:ecommerce/Src/modules/Kyc_Module/controller/Kyc_Controller.dart';
 import 'package:ecommerce/Src/modules/Onboarding/views/SplashScreen.dart';
 import 'package:ecommerce/Src/modules/auth_Module/controllers/LoginController.dart';

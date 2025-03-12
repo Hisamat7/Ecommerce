@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:ecommerce/Src/const/AppBarForApp.dart';
 import 'package:ecommerce/Src/const/App_Images.dart';
+import 'package:ecommerce/Src/const/Button.dart';
 import 'package:ecommerce/Src/modules/Kyc_Module/controller/Kyc_Controller.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/views/SetLocation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -78,21 +80,46 @@ class _UploadimagescreenState extends State<Uploadimagescreen> {
           ),
           Obx(
             () => kycController.imagePath.value.isNotEmpty
-                ? Container(
-                    margin: EdgeInsets.only(left: 20.w, right: 20.w),
-                    height: 250.h,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      color: Color(0xFF252525),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.file(
-                        File(kycController.imagePath.value),
-                        fit: BoxFit.cover,
+                ? Stack(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 20.w, right: 20.w),
+                        height: 250.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color(0xFF252525),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Image.file(
+                            File(kycController.imagePath.value),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
+                      Positioned(
+                        top: 10.h,
+                        right: 30.w,
+                        child: GestureDetector(
+                          onTap: () {
+                            kycController.clearImage();
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(8.w),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              Icons.close,
+                              color: Colors.white,
+                              size: 20.sp,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   )
                 : Column(
                     children: [
@@ -113,6 +140,26 @@ class _UploadimagescreenState extends State<Uploadimagescreen> {
                       ),
                     ],
                   ),
+          ),
+          Spacer(),
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, right: 20.w, bottom: 50.h),
+            child: Button(
+              text: "Next",
+              onPressed: () {
+                if (kycController.imagePath.value.isNotEmpty) {
+                  Get.to(() => SetLocation());
+                } else {
+                  Get.snackbar(
+                    "Error",
+                    "Please select an image",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                  );
+                }
+              },
+            ),
           ),
         ],
       ),
