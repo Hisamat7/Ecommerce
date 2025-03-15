@@ -1,4 +1,6 @@
 import 'package:ecommerce/Src/const/AppBarForApp.dart';
+import 'package:ecommerce/Src/const/Button.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/views/SignInSucessPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -116,9 +118,34 @@ class _SetLocationState extends State<SetLocation> {
                     ),
                   ),
                 ),
+                
+                
               ],
             ),
           ),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.only( bottom: 60),
+            child: Center(
+              child: Button(
+                text: "Next",
+               
+                onPressed: () {
+                if (kycController.location.value.isNotEmpty) {
+                  kycController.storeKycData();
+                }
+                else{
+                  Get.snackbar("Error", "Please select a location",
+                  backgroundColor: Colors.red,
+                  colorText: Colors.white
+                  
+                  );
+                }
+                },              
+              ),
+            ),
+          ),
+              
         ],
       ),
     );

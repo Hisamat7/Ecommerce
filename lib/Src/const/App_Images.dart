@@ -10,4 +10,5 @@ class AppImages {
   static const String facebookicon = "asset/image/facebook-3 1.png";
   static const String  galleryicon= "asset/image/Gallery Icon.png";
   static const String cameraicon= "asset/image/Camera Icon.png";
+  static const String tick= "asset/image/tick.png";
 }

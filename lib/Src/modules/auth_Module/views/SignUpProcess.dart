@@ -1,6 +1,7 @@
 import 'package:ecommerce/Src/const/AppBarForApp.dart';
 import 'package:ecommerce/Src/const/Button.dart';
 import 'package:ecommerce/Src/modules/Kyc_Module/UploadImageScreen.dart';
+import 'package:ecommerce/Src/modules/Kyc_Module/controller/Kyc_Controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class _SignUpProcessState extends State<SignUpProcess> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  KycController kycController = Get.find<KycController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,6 +122,9 @@ class _SignUpProcessState extends State<SignUpProcess> {
             child: Button(
               onPressed: () {
                 if (formKey.currentState!.validate()) {
+                  kycController.firstname(firstNameController.text);
+                  kycController.lastname(lastNameController.text);
+                  kycController.phonenumber(phoneController.text);
                   Get.to(() => Uploadimagescreen());
                 }
               },
